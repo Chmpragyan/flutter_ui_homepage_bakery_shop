@@ -1,5 +1,6 @@
 import 'package:e_shop/models/categories.dart';
 import 'package:e_shop/models/item_model.dart';
+import 'package:e_shop/screens/detail_screen.dart';
 import 'package:e_shop/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -119,71 +120,76 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisSpacing: 20,
                 ),
                 itemBuilder: (BuildContext context, index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 255, 246, 248),
-                      borderRadius: BorderRadius.vertical(
-                          bottom: Radius.circular(15), top: Radius.circular(5)),
-                      boxShadow: [
-                        BoxShadow(
-                            offset: Offset(1, 1),
-                            spreadRadius: 1,
-                            blurRadius: 1,
-                            color: Color.fromARGB(255, 238, 237, 237))
-                      ],
-                    ),
-                    margin: EdgeInsets.only(left: 5, right: 20),
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 130,
-                          width: 175,
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 254, 235, 241),
-                              borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(5)),
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      "assets/images/${itemsAvailable[index].image}"))),
-                        ),
-                        SizedBox(
-                          height: 4,
-                        ),
-                        Text(
-                          "\$" + itemsAvailable[index].price + "/ kg",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            color: Color.fromARGB(255, 99, 97, 97),
+                  return GestureDetector(
+                    onTap: (){
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>DetailScreen(),));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 255, 246, 248),
+                        borderRadius: BorderRadius.vertical(
+                            bottom: Radius.circular(15), top: Radius.circular(5)),
+                        boxShadow: [
+                          BoxShadow(
+                              offset: Offset(1, 1),
+                              spreadRadius: 1,
+                              blurRadius: 1,
+                              color: Color.fromARGB(255, 238, 237, 237))
+                        ],
+                      ),
+                      margin: EdgeInsets.only(left: 5, right: 20),
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 130,
+                            width: 175,
+                            decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 254, 235, 241),
+                                borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(5)),
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        "assets/images/${itemsAvailable[index].image}"))),
                           ),
-                        ),
-                        SizedBox(
-                          height: 4,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              itemsAvailable[index].name,
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 109, 25, 53),
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                              ),
+                          SizedBox(
+                            height: 4,
+                          ),
+                          Text(
+                            "\$" + itemsAvailable[index].price + "/ kg",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: Color.fromARGB(255, 99, 97, 97),
                             ),
-                            Container(
-                              child: Icon(
-                                Icons.add,
-                                color: Colors.white,
+                          ),
+                          SizedBox(
+                            height: 4,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                itemsAvailable[index].name,
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 109, 25, 53),
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
-                              decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 254, 89, 144),
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
+                              Container(
+                                child: Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 254, 89, 144),
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
